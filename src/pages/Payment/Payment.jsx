@@ -35,7 +35,7 @@ const Payment = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [upiId, setUpiId] = useState("harsha@upi");
   const [cardNumber, setCardNumber] = useState("4111 1111 1111 1111");
-  const [cardName, setCardName] = useState("Harsha");
+  const [cardName, setCardName] = useState("Winner");
   const [cvv, setCvv] = useState("123");
 
   const MotionSection = motion.section;

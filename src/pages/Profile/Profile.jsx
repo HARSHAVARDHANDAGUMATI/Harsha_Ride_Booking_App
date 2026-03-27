@@ -14,11 +14,11 @@ const Profile = () => {
       >
         <div className="flex flex-wrap items-center gap-4">
           <div className="icon-badge h-20 w-20 rounded-[28px] bg-[linear-gradient(135deg,var(--accent),var(--success))] text-2xl font-semibold text-slate-950">
-            H
+            W
           </div>
           <div className="flex-1">
             <p className="text-[11px] uppercase tracking-[0.45em] text-[color:var(--text-soft)]">Rider profile</p>
-            <h2 className="mt-2 text-3xl font-semibold">Harsha</h2>
+            <h2 className="mt-2 text-3xl font-semibold">Winner</h2>
             <p className="mt-2 text-sm text-[color:var(--text-dim)]">Premium rider with verified phone, wallet access, and saved locations.</p>
           </div>
           <button className="secondary-button">Edit profile</button>

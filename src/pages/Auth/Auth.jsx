@@ -166,7 +166,7 @@ const Auth = () => {
               <span className="mb-2 block text-sm text-[color:var(--text-dim)]">Full name</span>
               <input
                 className={inputClass}
-                placeholder="Harsha"
+                placeholder="Winner"
                 value={signup.name}
                 onChange={(event) => setSignup((prev) => ({ ...prev, name: event.target.value }))}
               />
