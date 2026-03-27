@@ -79,9 +79,17 @@ const AppShell = ({ children }) => {
               <BellIcon />
             </Link>
             <button
+              type="button"
               className="icon-button"
               aria-label="Toggle theme"
-              onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+              onClick={(e) => {
+                e.preventDefault();
+                const newTheme = theme === "dark" ? "light" : "dark";
+                document.documentElement.dataset.theme = newTheme;
+                document.documentElement.style.colorScheme = newTheme;
+                localStorage.setItem("ride-theme", newTheme);
+                setTheme(newTheme);
+              }}
             >
               {theme === "dark" ? <SunIcon /> : <MoonIcon />}
             </button>
