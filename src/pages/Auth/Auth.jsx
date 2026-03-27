@@ -74,34 +74,36 @@ const Auth = () => {
   const MotionSection = motion.section;
 
   return (
-    <div className="grid gap-6 pb-32 lg:grid-cols-[1.1fr_0.9fr]">
+    <div className="grid gap-4 pb-24 lg:grid-cols-[1.02fr_0.98fr] lg:gap-6 lg:pb-32">
       <MotionSection
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        className="card-shell overflow-hidden p-6 md:p-8"
+        className="card-shell order-2 overflow-hidden p-5 md:p-8 lg:order-1"
       >
-        <div className="flex items-center gap-3">
-          <div className="icon-badge bg-[color:var(--accent)] text-slate-950">
+        <div className="flex items-start gap-3">
+          <div className="icon-badge h-12 w-12 shrink-0 rounded-[16px] bg-[color:var(--accent)] text-slate-950 md:h-12 md:w-12">
             <RideIcon />
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-[11px] uppercase tracking-[0.45em] text-[color:var(--text-soft)]">Ride identity</p>
-            <h2 className="text-3xl font-semibold text-[color:var(--text-main)]">Secure login. Fast booking.</h2>
+            <h2 className="text-[2rem] font-semibold leading-tight text-[color:var(--text-main)] md:text-3xl">
+              Secure login. Fast booking.
+            </h2>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">
           {authHighlights.map((item) => (
             <div key={item} className="rounded-[24px] border border-[color:var(--border)] bg-[color:var(--surface-2)] p-4">
-              <div className="icon-badge mb-4 h-10 w-10 bg-[color:var(--surface-3)] text-[color:var(--accent-strong)]">
+              <div className="icon-badge mb-4 h-10 w-10 rounded-[14px] bg-[color:var(--surface-3)] text-[color:var(--accent-strong)]">
                 <SparkIcon className="h-4 w-4" />
               </div>
-              <p className="text-sm text-[color:var(--text-main)]">{item}</p>
+              <p className="text-sm leading-7 text-[color:var(--text-main)]">{item}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 rounded-[28px] bg-[linear-gradient(135deg,rgba(255,220,95,0.16),rgba(255,255,255,0.02))] p-5">
+        <div className="mt-6 rounded-[28px] bg-[linear-gradient(135deg,rgba(255,220,95,0.16),rgba(255,255,255,0.02))] p-5">
           <p className="text-sm font-medium text-[color:var(--text-main)]">{successText}</p>
           <div className="mt-4 flex flex-wrap gap-3 text-xs text-[color:var(--text-dim)]">
             <span className="pill-chip">OTP-ready mobile validation</span>
@@ -115,7 +117,7 @@ const Auth = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.08 }}
-        className="card-shell p-5 md:p-6"
+        className="card-shell order-1 p-4 md:p-6 lg:order-2"
       >
         <div className="glass-strip grid grid-cols-2 p-1">
           {["login", "signup"].map((item) => (
@@ -134,7 +136,7 @@ const Auth = () => {
         </div>
 
         {mode === "login" ? (
-          <form className="mt-6 space-y-4" onSubmit={handleLogin}>
+          <form className="mt-5 space-y-4" onSubmit={handleLogin}>
             <label className="block">
               <span className="mb-2 block text-sm text-[color:var(--text-dim)]">Mobile number</span>
               <input
@@ -161,7 +163,7 @@ const Auth = () => {
             </button>
           </form>
         ) : (
-          <form className="mt-6 space-y-4" onSubmit={handleSignup}>
+          <form className="mt-5 space-y-4" onSubmit={handleSignup}>
             <label className="block">
               <span className="mb-2 block text-sm text-[color:var(--text-dim)]">Full name</span>
               <input
@@ -215,7 +217,7 @@ const Auth = () => {
           </div>
         )}
 
-        <div className="mt-6 rounded-[24px] border border-[color:var(--border)] bg-[color:var(--surface-2)] p-4">
+        <div className="mt-5 rounded-[24px] border border-[color:var(--border)] bg-[color:var(--surface-2)] p-4">
           <div className="flex items-center gap-3">
             <div className="icon-badge h-10 w-10 bg-[color:var(--surface-3)] text-[color:var(--accent-strong)]">
               <ShieldIcon className="h-4 w-4" />

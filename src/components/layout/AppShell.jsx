@@ -52,7 +52,7 @@ const AppShell = ({ children }) => {
   const MotionDiv = motion.div;
 
   return (
-    <div className="min-h-screen bg-[color:var(--page-bg)] text-[color:var(--text-main)] transition-colors duration-300">
+    <div className="min-h-screen overflow-x-hidden bg-[color:var(--page-bg)] text-[color:var(--text-main)] transition-colors duration-300">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="orb orb-one" />
         <div className="orb orb-two" />
@@ -60,25 +60,25 @@ const AppShell = ({ children }) => {
         <div className="grid-mask" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[1440px] flex-col px-4 pb-8 pt-4 md:px-6 lg:px-8">
-        <header className="glass-strip relative z-30 flex items-center justify-between gap-4 rounded-[30px] px-4 py-4 md:px-6">
-          <div className="flex items-center gap-3">
-            <div className="icon-badge bg-[color:var(--accent)] text-slate-950">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[1440px] flex-col px-3 pb-8 pt-3 md:px-6 lg:px-8">
+        <header className="glass-strip relative z-30 flex items-center justify-between gap-3 rounded-[26px] px-3 py-3 md:rounded-[30px] md:px-6 md:py-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="icon-badge h-12 w-12 shrink-0 rounded-[16px] bg-[color:var(--accent)] text-slate-950 md:h-12 md:w-12">
               <RideIcon />
             </div>
-            <div>
-              <p className="text-[11px] uppercase tracking-[0.45em] text-[color:var(--text-soft)]">{activeMeta.eyebrow}</p>
-              <h1 className="text-lg font-semibold md:text-xl">{activeMeta.title}</h1>
+            <div className="min-w-0">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[color:var(--text-soft)] md:text-[11px] md:tracking-[0.45em]">{activeMeta.eyebrow}</p>
+              <h1 className="text-base font-semibold leading-tight md:text-xl">{activeMeta.title}</h1>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Link to="/notifications" className="icon-button" aria-label="Notifications">
+          <div className="flex shrink-0 items-center gap-2">
+            <Link to="/notifications" className="icon-button h-11 w-11 rounded-[16px] md:rounded-[18px]" aria-label="Notifications">
               <BellIcon />
             </Link>
             <button
               type="button"
-              className="icon-button"
+              className="icon-button h-11 w-11 rounded-[16px] md:rounded-[18px]"
               aria-label="Toggle theme"
               onClick={(e) => {
                 e.preventDefault();
@@ -90,7 +90,7 @@ const AppShell = ({ children }) => {
             >
               {theme === "dark" ? <SunIcon /> : <MoonIcon />}
             </button>
-            <Link to="/auth" className="icon-button" aria-label="Authentication">
+            <Link to="/auth" className="icon-button h-11 w-11 rounded-[16px] md:rounded-[18px]" aria-label="Authentication">
               <MenuIcon />
             </Link>
           </div>

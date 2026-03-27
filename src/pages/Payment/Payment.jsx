@@ -53,7 +53,7 @@ const Payment = () => {
 
   return (
     <div className="space-y-5 pb-32">
-      <MotionSection className="grid gap-5 xl:grid-cols-[0.98fr_1.02fr]">
+      <MotionSection className="grid gap-5 pb-4 xl:grid-cols-[0.98fr_1.02fr]">
         <MotionDiv initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="card-shell p-5 md:p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -133,7 +133,7 @@ const Payment = () => {
               <h3 className="text-2xl font-semibold">Pay with</h3>
               <span className="text-sm text-[color:var(--text-dim)]">Choose method below</span>
             </div>
-            <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {paymentMethods.map((item) => {
                 const active = paymentMethod === item.id;
                 const Icon = paymentIcons[item.id];
@@ -141,15 +141,17 @@ const Payment = () => {
                   <button
                     key={item.id}
                     onClick={() => setPaymentMethod(item.id)}
-                    className={`rounded-[24px] border p-4 text-left transition ${
+                    className={`flex min-h-[92px] items-center gap-4 rounded-[24px] border p-4 text-left transition sm:block sm:min-h-[unset] ${
                       active ? "border-[color:var(--accent)] bg-[linear-gradient(135deg,rgba(255,220,95,0.16),rgba(255,255,255,0.03))]" : "border-[color:var(--border)] bg-[color:var(--surface-2)]"
                     }`}
                   >
-                    <div className="icon-badge h-10 w-10 bg-[color:var(--surface-3)] text-[color:var(--accent-strong)]">
+                    <div className="icon-badge h-10 w-10 shrink-0 bg-[color:var(--surface-3)] text-[color:var(--accent-strong)]">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <p className="mt-3 text-base font-semibold">{item.name}</p>
-                    <p className="mt-2 text-xs leading-5 text-[color:var(--text-dim)]">{item.detail}</p>
+                    <div className="min-w-0 sm:mt-3">
+                      <p className="text-base font-semibold">{item.name}</p>
+                      <p className="mt-2 text-xs leading-5 text-[color:var(--text-dim)]">{item.detail}</p>
+                    </div>
                   </button>
                 );
               })}
@@ -194,19 +196,19 @@ const Payment = () => {
       </MotionSection>
 
       {showCheckout && (
-        <MotionSection initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 md:items-center">
-          <MotionDiv initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="card-shell w-full max-w-xl p-5 md:p-6">
-            <div className="flex items-center justify-between">
-              <div>
+        <MotionSection initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-3 md:items-center md:p-4">
+          <MotionDiv initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="card-shell max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-[28px] p-4 md:p-6">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
                 <p className="text-[11px] uppercase tracking-[0.45em] text-[color:var(--text-soft)]">Checkout</p>
                 <h3 className="mt-2 text-2xl font-semibold">Complete payment</h3>
               </div>
-              <button onClick={() => setShowCheckout(false)} className="secondary-button px-4 py-2">
+              <button onClick={() => setShowCheckout(false)} className="secondary-button shrink-0 px-4 py-2">
                 Close
               </button>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {paymentMethods.map((item) => (
                 <button
                   key={item.id}
