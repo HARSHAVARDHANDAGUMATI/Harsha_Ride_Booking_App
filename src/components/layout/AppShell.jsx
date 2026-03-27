@@ -40,14 +40,12 @@ const AppShell = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("ride-theme") || "dark";
     document.documentElement.dataset.theme = savedTheme;
-    document.documentElement.style.colorScheme = savedTheme;
     return savedTheme;
   });
   const activeMeta = pageMeta[pathname] || pageMeta["/"];
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
     localStorage.setItem("ride-theme", theme);
   }, [theme]);
 
@@ -86,7 +84,6 @@ const AppShell = ({ children }) => {
                 e.preventDefault();
                 const newTheme = theme === "dark" ? "light" : "dark";
                 document.documentElement.dataset.theme = newTheme;
-                document.documentElement.style.colorScheme = newTheme;
                 localStorage.setItem("ride-theme", newTheme);
                 setTheme(newTheme);
               }}
