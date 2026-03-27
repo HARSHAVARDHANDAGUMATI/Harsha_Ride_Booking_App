@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { navLinks } from "../../data/mockData";
@@ -37,11 +37,17 @@ const pageMeta = {
 
 const AppShell = ({ children }) => {
   const { pathname } = useLocation();
-  const [theme, setTheme] = useState(() => localStorage.getItem("ride-theme") || "dark");
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("ride-theme") || "dark";
+    document.documentElement.dataset.theme = savedTheme;
+    document.documentElement.style.colorScheme = savedTheme;
+    return savedTheme;
+  });
   const activeMeta = pageMeta[pathname] || pageMeta["/"];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
     localStorage.setItem("ride-theme", theme);
   }, [theme]);
 
