@@ -31,6 +31,8 @@ const Auth = () => {
   const [mode, setMode] = useState("login");
   const [login, setLogin] = useState(initialLogin);
   const [signup, setSignup] = useState(initialSignup);
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showSignupPassword, setShowSignupPassword] = useState(false);
   const [loginErrors, setLoginErrors] = useState({});
   const [signupErrors, setSignupErrors] = useState({});
   const [statusMessage, setStatusMessage] = useState("");
@@ -149,13 +151,22 @@ const Auth = () => {
             </label>
             <label className="block">
               <span className="mb-2 block text-sm text-[color:var(--text-dim)]">Password</span>
-              <input
-                type="password"
-                className={inputClass}
-                placeholder="Enter password"
-                value={login.password}
-                onChange={(event) => setLogin((prev) => ({ ...prev, password: event.target.value }))}
-              />
+              <div className="relative">
+                <input
+                  type={showLoginPassword ? "text" : "password"}
+                  className={`${inputClass} pr-20`}
+                  placeholder="Enter password"
+                  value={login.password}
+                  onChange={(event) => setLogin((prev) => ({ ...prev, password: event.target.value }))}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowLoginPassword((current) => !current)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-[color:var(--text-dim)]"
+                >
+                  {showLoginPassword ? "Hide" : "Show"}
+                </button>
+              </div>
               {activeErrors.password && <span className="mt-2 block text-xs text-rose-400">{activeErrors.password}</span>}
             </label>
             <button type="submit" className="primary-button w-full justify-center">
@@ -196,13 +207,22 @@ const Auth = () => {
             </label>
             <label className="block">
               <span className="mb-2 block text-sm text-[color:var(--text-dim)]">Password</span>
-              <input
-                type="password"
-                className={inputClass}
-                placeholder="Create password"
-                value={signup.password}
-                onChange={(event) => setSignup((prev) => ({ ...prev, password: event.target.value }))}
-              />
+              <div className="relative">
+                <input
+                  type={showSignupPassword ? "text" : "password"}
+                  className={`${inputClass} pr-20`}
+                  placeholder="Create password"
+                  value={signup.password}
+                  onChange={(event) => setSignup((prev) => ({ ...prev, password: event.target.value }))}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowSignupPassword((current) => !current)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-[color:var(--text-dim)]"
+                >
+                  {showSignupPassword ? "Hide" : "Show"}
+                </button>
+              </div>
               {activeErrors.password && <span className="mt-2 block text-xs text-rose-400">{activeErrors.password}</span>}
             </label>
             <button type="submit" className="primary-button w-full justify-center">
